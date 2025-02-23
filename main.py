@@ -1,6 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import Response
 from markitdown import MarkItDown, UnsupportedFormatException, FileConversionException
+from urllib.parse import unquote
 
 app = FastAPI(
     title="URL to Markdown API",
@@ -12,17 +13,24 @@ md = MarkItDown()
 
 
 @app.get("/{url:path}")
-async def convert_url(url: str):
+async def convert_url(url, request: Request):
+    url = request.url.path[1:] if not request.url.query else request.url.path[1:] + "?" + request.url.query
+    print(f"Received URL: {url}")
+    if url is None or url == "":
+        return Response(content="Welcome to URL to Markdown API", media_type="text/plain")
+    
+    decoded_url = unquote(url)
+    print(f"Full URL received: {decoded_url}")
+
     try:
-        # Normalize URL format
-        if not url.startswith(("http://", "https://")):
-            if url.startswith("www."):
-                url = "https://" + url
+        if not decoded_url.startswith(("http://", "https://")):
+            if decoded_url.startswith("www."):
+                decoded_url = "https://" + decoded_url
             else:
-                url = "https://www." + url
+                decoded_url = "https://www." + decoded_url
 
         try:
-            result = md.convert(url)
+            result = md.convert(decoded_url)
             return Response(content=result.text_content, media_type="text/plain")
         except UnsupportedFormatException as e:
             raise HTTPException(
@@ -41,7 +49,3 @@ async def convert_url(url: str):
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"URL processing failed: {str(e)}")
 
-
-@app.get("/")
-async def root():
-    return {"message": "Welcome to URL to Markdown API"}
