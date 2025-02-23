@@ -1,16 +1,31 @@
 # URL to Markdown API
 
-A powerful FastAPI service that converts web content from URLs into clean, readable Markdown format. This service is built using the MarkItDown library and provides a simple HTTP API endpoint for converting various web content types.
+A powerful FastAPI service that converts web content from URLs into clean, readable Markdown format. This service is built using Microsoft's MarkItDown library and provides a simple HTTP API endpoint for converting various web content types. By converting content to Markdown, it makes web content more accessible and structured for Large Language Models (LLMs) and text analysis tasks.
 
 ## Features
 
-- Convert web pages to clean Markdown
+- Convert web pages to clean Markdown optimized for LLM processing
 - Support for various content types including:
-  - Web articles
+  - Web articles and HTML content
   - YouTube videos
   - PDF documents
+  - PowerPoint presentations
+  - Word documents
+  - Excel spreadsheets
+  - Images (with EXIF metadata and OCR)
+  - Audio files (with metadata and transcription)
+  - Text-based formats (CSV, JSON, XML)
+  - ZIP files (processes contents)
 - Automatic URL protocol handling
 - Clean error handling with appropriate HTTP status codes
+
+## Why Markdown for LLMs?
+
+- **Structured Format**: Markdown provides a clean, hierarchical structure that LLMs can easily parse and understand
+- **Consistent Representation**: Different content types are normalized into a unified text format
+- **Preserved Semantics**: Headers, lists, and emphasis are maintained in a way that preserves document structure
+- **Reduced Noise**: Removes unnecessary formatting and styling, focusing on content
+- **Enhanced Accessibility**: Makes content more accessible for text analysis and natural language processing
 
 ## Installation
 
