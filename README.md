@@ -1,14 +1,22 @@
 # URL to Markdown API
 
-A powerful FastAPI service that converts web content from URLs into clean, readable Markdown format, with robust data scraping capabilities. This service excels at extracting multimedia content (such as transcripts or video info from YouTube videos and websites) and converts them into accessible markdown format. Built using Microsoft's MarkItDown library, it provides a simple HTTP API endpoint for converting various web content types. By converting content to Markdown, it makes web content more accessible and structured for Large Language Models (LLMs) and text analysis tasks.
+Transform any web content into clean, LLM-ready Markdown with a single API call! This powerful FastAPI service seamlessly converts web pages, documents, and multimedia content into structured Markdown format, making it perfect for AI/ML pipelines, content aggregation, and data processing workflows.
 
 ![URL to Markdown Converter](images/image1.png)
 ![URL to Markdown Converter](images/image2.png)
 ![URL to Markdown Converter](images/image3.png)
 
-## Live Demo
+## 🚀 Key Features
 
-Try the live free demo at [markdown.nimk.ir](https://markdown.nimk.ir)
+- **Universal Content Support**: Convert web articles, YouTube videos, PDFs, Office documents, and more
+- **LLM-Optimized Output**: Clean, structured Markdown perfect for AI/ML processing
+- **Rich Media Handling**: Extract metadata from images, audio files, and videos
+- **Smart Processing**: OCR for images, transcription for audio, and intelligent content extraction
+- **Simple Integration**: RESTful API with clear error handling and response codes
+
+## 🌐 Live Demo
+
+Try it now at [markdown.nimk.ir](https://markdown.nimk.ir) - Transform any URL into clean Markdown instantly!
 
 ### Example 1: Converting a Web Article
 
