@@ -6,6 +6,26 @@ A powerful FastAPI service that converts web content from URLs into clean, reada
 ![URL to Markdown Converter](images/image2.png)
 ![URL to Markdown Converter](images/image3.png)
 
+## Live Demo
+
+Try the live free demo at [markdown.nimk.ir](https://markdown.nimk.ir)
+
+### Example 1: Converting a Web Article
+
+```
+GET https://markdown.nimk.ir/https://ask.library.arizona.edu/faq/407985
+```
+
+This will convert the library FAQ article into clean, readable Markdown format.
+
+### Example 2: Converting a YouTube Video
+
+```
+GET https://markdown.nimk.ir/https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+This will extract the video title, description, and other metadata in Markdown format.
+
 ## Features
 
 - Convert web pages to clean Markdown optimized for LLM processing

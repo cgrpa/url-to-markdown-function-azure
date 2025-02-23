@@ -14,11 +14,18 @@ md = MarkItDown()
 
 @app.get("/{url:path}")
 async def convert_url(url, request: Request):
-    url = request.url.path[1:] if not request.url.query else request.url.path[1:] + "?" + request.url.query
+    url = (
+        request.url.path[1:]
+        if not request.url.query
+        else request.url.path[1:] + "?" + request.url.query
+    )
     print(f"Received URL: {url}")
     if url is None or url == "":
-        return Response(content="Welcome to URL to Markdown API", media_type="text/plain")
-    
+        return Response(
+            content="Welcome to URL to Markdown API\nUsage: https://markdown.nimk.ir/YOUR_URL",
+            media_type="text/plain",
+        )
+
     decoded_url = unquote(url)
     print(f"Full URL received: {decoded_url}")
 
@@ -48,4 +55,3 @@ async def convert_url(url, request: Request):
         raise
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"URL processing failed: {str(e)}")
-
