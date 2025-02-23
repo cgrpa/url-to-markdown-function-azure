@@ -1,6 +1,10 @@
 # URL to Markdown API
 
-A powerful FastAPI service that converts web content from URLs into clean, readable Markdown format. This service is built using Microsoft's MarkItDown library and provides a simple HTTP API endpoint for converting various web content types. By converting content to Markdown, it makes web content more accessible and structured for Large Language Models (LLMs) and text analysis tasks.
+A powerful FastAPI service that converts web content from URLs into clean, readable Markdown format, with robust data scraping capabilities. This service excels at extracting multimedia content (such as transcripts or video info from YouTube videos and websites) and converts them into accessible markdown format. Built using Microsoft's MarkItDown library, it provides a simple HTTP API endpoint for converting various web content types. By converting content to Markdown, it makes web content more accessible and structured for Large Language Models (LLMs) and text analysis tasks.
+
+![URL to Markdown Converter](images/image1.png)
+![URL to Markdown Converter](images/image2.png)
+![URL to Markdown Converter](images/image3.png)
 
 ## Features
 
