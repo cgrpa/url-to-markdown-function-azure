@@ -29,11 +29,33 @@ A powerful FastAPI service that converts web content from URLs into clean, reada
 
 ## Installation
 
+### Standard Installation
+
 1. Clone the repository
 2. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+### Docker Deployment
+
+1. Using Docker Compose (Recommended)
+
+```bash
+docker-compose up -d
+```
+
+This will build and start the service in detached mode. The API will be available at `http://localhost:8000`
+
+2. Using Docker directly
+
+```bash
+# Build the image
+docker build -t url-to-markdown .
+
+# Run the container
+docker run -d -p 8000:8000 url-to-markdown
 ```
 
 ## Usage
