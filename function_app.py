@@ -36,21 +36,41 @@ async def convert_url(req: func.HttpRequest) -> func.HttpResponse:
             mimetype="text/plain"
         )
 
-    decoded_url = unquote(url)
+    # URL decoding and sanitization
+    decoded_url = unquote(url).strip()
     logger.info("Decoded URL: %s", decoded_url)
 
     try:
-        if not decoded_url.startswith(("http://", "https://")):
-            if decoded_url.startswith("www."):
-                decoded_url = "https://" + decoded_url
-            else:
-                decoded_url = "https://www." + decoded_url
+        # Parse and validate URL
+        parsed = urlparse(decoded_url)
+        
+        # If no scheme, add https://
+        if not parsed.scheme:
+            decoded_url = f"https://{decoded_url}"
+            parsed = urlparse(decoded_url)
+        
+        # Basic validation
+        if not parsed.netloc:
+            return func.HttpResponse(
+                body="Invalid URL: Missing domain",
+                status_code=400
+            )
+        
+        # Ensure scheme is http or https
+        if parsed.scheme not in ('http', 'https'):
+            return func.HttpResponse(
+                body="Invalid URL: Only HTTP and HTTPS schemes are supported",
+                status_code=400
+            )
+        
+        final_url = parsed.geturl()
+        logger.info("Final URL: %s", final_url)
 
         try:
             async def _convert() -> str:
                 def _run():
                     instance = MarkItDown()
-                    conversion_result = instance.convert(decoded_url)
+                    conversion_result = instance.convert(final_url)
                     return conversion_result.text_content
 
                 return await asyncio.to_thread(_run)
