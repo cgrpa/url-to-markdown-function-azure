@@ -1,3 +1,5 @@
+A fork adapted to use a Python Function App for the API endpoints.
+
 # URL to Markdown API
 
 Transform any web content into clean, LLM-ready Markdown with a single API call! This powerful FastAPI service seamlessly converts web pages, documents, and multimedia content into structured Markdown format, making it perfect for AI/ML pipelines, content aggregation, and data processing workflows.
