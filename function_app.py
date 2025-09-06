@@ -4,7 +4,7 @@ from markitdown import MarkItDown, UnsupportedFormatException, FileConversionExc
 from urllib.parse import unquote, urlparse
 import asyncio
 
-app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
