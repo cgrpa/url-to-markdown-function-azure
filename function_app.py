@@ -17,15 +17,16 @@ async def healthz(req: func.HttpRequest) -> func.HttpResponse:
         mimetype="text/plain"
     )
 
-@app.route(route="convert/{*url}", methods=["GET"])
+
+@app.route(route="convert", methods=["GET"])
 async def convert_url(req: func.HttpRequest) -> func.HttpResponse:
-    # Get URL from route parameter
-    raw_url = req.route_params.get('url', '')
-    logger.info("Raw URL from route params: %s", raw_url)
+    
+    raw_url = req.params.get('url', '')
+    logger.info("URL query parameter: %s", raw_url)
     
     if not raw_url:
         return func.HttpResponse(
-            body="Welcome to URL to Markdown API\nUsage: https://markdown.nimk.ir/convert/YOUR_URL",
+            body="Welcome to URL to Markdown API\nUsage: https://markdown.nimk.ir/convert?url=YOUR_URL",
             status_code=200,
             mimetype="text/plain"
         )
